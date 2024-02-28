@@ -165,6 +165,8 @@ class TemplateHelper {
 					'ifCond' => 'Flow\TemplateHelper::ifCond',
 					'tooltip' => 'Flow\TemplateHelper::tooltip',
 					'progressiveEnhancement' => 'Flow\TemplateHelper::progressiveEnhancement',
+					'avatar' => 'ExtAchievement::FlowAvatarHelper',
+					'title' => 'ExtAchievement::FlowTitleHelper',
 				],
 			]
 		);
