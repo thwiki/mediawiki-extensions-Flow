@@ -2,6 +2,7 @@
 
 namespace Flow\Tests\Formatter;
 
+use MediaWiki\Context\RequestContext;
 use Flow\Container;
 use Flow\Data\Mapper\CachingObjectMapper;
 use Flow\Formatter\CheckUserFormatter;

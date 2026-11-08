@@ -262,13 +262,13 @@ class ReferenceRecorder extends AbstractListener {
 	 */
 	public function getExistingReferences( $revType, UUID $objectId ) {
 		$prevWikiReferences = $this->storage->find( 'WikiReference', [
-			'ref_src_wiki' => WikiMap::getCurrentWikiId(),
+			'ref_src_wiki' => \MediaWiki\WikiMap\WikiMap::getCurrentWikiId(),
 			'ref_src_object_type' => $revType,
 			'ref_src_object_id' => $objectId,
 		] );
 
 		$prevUrlReferences = $this->storage->find( 'URLReference', [
-			'ref_src_wiki' => WikiMap::getCurrentWikiId(),
+			'ref_src_wiki' => \MediaWiki\WikiMap\WikiMap::getCurrentWikiId(),
 			'ref_src_object_type' => $revType,
 			'ref_src_object_id' => $objectId,
 		] );

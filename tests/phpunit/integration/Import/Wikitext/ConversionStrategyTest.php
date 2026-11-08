@@ -23,7 +23,6 @@ use MediaWikiIntegrationTestCase;
  * @group Database
  */
 class ConversionStrategyTest extends MediaWikiIntegrationTestCase {
-	use LinkCacheTestTrait;
 
 	protected function setUp(): void {
 		parent::setUp();

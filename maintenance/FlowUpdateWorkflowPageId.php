@@ -62,7 +62,7 @@ class FlowUpdateWorkflowPageId extends LoggedUpdateMaintenance {
 		);
 		$it->setFetchColumns( [ '*' ] );
 		$it->addConditions( [
-			'workflow_wiki' => WikiMap::getCurrentWikiId(),
+			'workflow_wiki' => \MediaWiki\WikiMap\WikiMap::getCurrentWikiId(),
 		] );
 		$it->setCaller( __METHOD__ );
 

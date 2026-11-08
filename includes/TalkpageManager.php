@@ -195,7 +195,7 @@ class TalkpageManager implements OccupationController {
 			// exists
 			$ca = CentralAuthUser::getPrimaryInstance( $user );
 			if ( $ca->exists() && !$ca->isAttached() ) {
-				$ca->attach( WikiMap::getCurrentWikiId(), 'admin' );
+				$ca->attach( \MediaWiki\WikiMap\WikiMap::getCurrentWikiId(), 'admin' );
 			}
 		}
 

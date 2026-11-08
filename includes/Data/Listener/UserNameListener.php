@@ -24,14 +24,14 @@ class UserNameListener extends AbstractListener {
 	 * @param UserNameBatch $batch
 	 * @param array $keys key - a list of keys from storage that contain user ids, value - the wiki for the
 	 *   user id lookup, default to $wiki if null
-	 * @param string|null $wiki The wikiid to use when $wikiKey is null. If both are null WikiMap::getCurrentWikiId() is used
+	 * @param string|null $wiki The wikiid to use when $wikiKey is null. If both are null \MediaWiki\WikiMap\WikiMap::getCurrentWikiId() is used
 	 */
 	public function __construct( UserNameBatch $batch, array $keys, $wiki = null ) {
 		$this->batch = $batch;
 		$this->keys = $keys;
 
 		if ( $wiki === null ) {
-			$this->wiki = WikiMap::getCurrentWikiId();
+			$this->wiki = \MediaWiki\WikiMap\WikiMap::getCurrentWikiId();
 		} else {
 			$this->wiki = $wiki;
 		}

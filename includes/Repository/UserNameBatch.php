@@ -157,7 +157,7 @@ class UserNameBatch {
 	 */
 	protected function resolveUserPages( $wiki, array $usernames ) {
 		// LinkBatch currently only supports the current wiki
-		if ( $wiki !== WikiMap::getCurrentWikiId() || !$usernames ) {
+		if ( $wiki !== \MediaWiki\WikiMap\WikiMap::getCurrentWikiId() || !$usernames ) {
 			return;
 		}
 

@@ -73,7 +73,7 @@ class Templating {
 		if ( isset( $cache[$userid][$userip] ) ) {
 			return $cache[$userid][$userip];
 		}
-		$username = $this->usernames->get( WikiMap::getCurrentWikiId(), $userid, $userip );
+		$username = $this->usernames->get( \MediaWiki\WikiMap\WikiMap::getCurrentWikiId(), $userid, $userip );
 		$cache[$userid][$userip] = $username ?
 			Linker::userLink( $userid, $username ) . Linker::userToolLinks( $userid, $username ) :
 			'';

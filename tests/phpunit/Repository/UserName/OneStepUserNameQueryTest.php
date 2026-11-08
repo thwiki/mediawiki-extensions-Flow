@@ -31,7 +31,7 @@ class OneStepUserNameQueryTest extends \MediaWikiIntegrationTestCase {
 		] );
 
 		$result = $query->execute(
-			WikiMap::getCurrentWikiId(), [
+			\MediaWiki\WikiMap\WikiMap::getCurrentWikiId(), [
 				$u1->getId(),
 				$u2->getId(),
 				$u3->getId(),

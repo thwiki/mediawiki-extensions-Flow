@@ -2,6 +2,7 @@
 
 namespace Flow\Formatter;
 
+use MediaWiki\Linker\Linker;
 use Flow\Collection\PostCollection;
 use Flow\Conversion\Utils;
 use Flow\Exception\FlowException;
@@ -473,7 +474,7 @@ class RevisionFormatter {
 			'id' => $userId
 		];
 		// Only works for the local wiki
-		if ( $res['name'] && WikiMap::getCurrentWikiId() === $userWiki ) {
+		if ( $res['name'] && \MediaWiki\WikiMap\WikiMap::getCurrentWikiId() === $userWiki ) {
 			$res['gender'] = $this->genderCache->getGenderOf( $res['name'], __METHOD__ );
 		}
 		if ( $res['name'] ) {

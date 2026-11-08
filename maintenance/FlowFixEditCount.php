@@ -80,7 +80,7 @@ class FlowFixEditCount extends LoggedUpdateMaintenance {
 				$dbr->expr( 'rev_id', '>', $continue->getBinary() ),
 				$dbr->expr( 'rev_id', '<=', $stop->getBinary() ),
 				$dbr->expr( 'rev_user_id', '>', 0 ),
-				'rev_user_wiki' => WikiMap::getCurrentWikiId(),
+				'rev_user_wiki' => \MediaWiki\WikiMap\WikiMap::getCurrentWikiId(),
 				'rev_change_type' => $countableActions,
 			] )
 			->orderBy( 'rev_id' )

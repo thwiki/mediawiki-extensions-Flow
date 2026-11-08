@@ -147,7 +147,7 @@ class ContributionsQuery extends AbstractQuery {
 			$conditions['rev_user_id'] = 0;
 			$conditions['rev_user_ip'] = $pager->getTarget();
 		}
-		$conditions['rev_user_wiki'] = WikiMap::getCurrentWikiId();
+		$conditions['rev_user_wiki'] = \MediaWiki\WikiMap\WikiMap::getCurrentWikiId();
 
 		if ( $isContribsPager && $pager->isNewOnly() ) {
 			$conditions['rev_parent_id'] = null;
@@ -172,7 +172,7 @@ class ContributionsQuery extends AbstractQuery {
 		}
 
 		// Find only within requested wiki/namespace
-		$conditions['workflow_wiki'] = WikiMap::getCurrentWikiId();
+		$conditions['workflow_wiki'] = \MediaWiki\WikiMap\WikiMap::getCurrentWikiId();
 		if ( $pager->getNamespace() !== '' ) {
 			$conditions['workflow_namespace'] = $pager->getNamespace();
 		}

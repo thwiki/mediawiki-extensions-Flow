@@ -2,6 +2,7 @@
 
 namespace Flow\Data\Storage;
 
+use Wikimedia\Rdbms\IDatabase;
 use Flow\Data\ObjectManager;
 use Flow\Data\ObjectStorage;
 use Flow\DbFactory;

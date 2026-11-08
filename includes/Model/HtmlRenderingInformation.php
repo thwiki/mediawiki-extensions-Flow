@@ -2,6 +2,7 @@
 
 namespace Flow\Model;
 
+use MediaWiki\Output\OutputPage;
 use MediaWiki\Api\ApiSerializable;
 
 /**

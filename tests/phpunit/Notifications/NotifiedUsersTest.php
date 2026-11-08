@@ -124,8 +124,8 @@ class NotifiedUsersTest extends PostRevisionTestCase {
 	 *   'post' => \Flow\Model\PostRevision
 	 *   'post-2' => \Flow\Model\PostRevision
 	 *   'topic' => \Flow\Model\PostRevision
-	 *   'user' => \User
-	 *   'agent' => \User
+	 *   'user' => User
+	 *   'agent' => User
 	 *   'notificationController' => \Flow\NotificationController
 	 *  ]
 	 */

@@ -94,7 +94,7 @@ class FlowRemoveOldTopics extends Maintenance {
 			$revisions = $this->storage->find(
 				'Header',
 				[
-					'rev_user_wiki' => WikiMap::getCurrentWikiId(),
+					'rev_user_wiki' => \MediaWiki\WikiMap\WikiMap::getCurrentWikiId(),
 					'rev_type' => 'header',
 					$dbr->expr( 'rev_id', '>', $startId->getBinary() ),
 					$dbr->expr( 'rev_id', '<', $endId->getBinary() ),
@@ -128,7 +128,7 @@ class FlowRemoveOldTopics extends Maintenance {
 				$uuids[$revision->getCollectionId()->getAlphadecimal()] = $revision->getCollectionId();
 
 				$conds[] = [
-					'rev_user_wiki' => WikiMap::getCurrentWikiId(),
+					'rev_user_wiki' => \MediaWiki\WikiMap\WikiMap::getCurrentWikiId(),
 					'rev_type' => 'header',
 					$dbr->expr( 'rev_id', '>=', $endId->getBinary() ),
 					'rev_type_id' => $revision->getCollectionId()->getBinary(),
@@ -155,7 +155,7 @@ class FlowRemoveOldTopics extends Maintenance {
 			$revisions = $this->storage->find(
 				'Header',
 				[
-					'rev_user_wiki' => WikiMap::getCurrentWikiId(),
+					'rev_user_wiki' => \MediaWiki\WikiMap\WikiMap::getCurrentWikiId(),
 					'rev_type' => 'header',
 					'rev_type_id' => UUID::convertUUIDs( $uuids ),
 				]
@@ -196,7 +196,7 @@ class FlowRemoveOldTopics extends Maintenance {
 				'Workflow',
 				[
 					$dbr->expr( 'workflow_id', '>', $startId->getBinary() ),
-					'workflow_wiki' => WikiMap::getCurrentWikiId(),
+					'workflow_wiki' => \MediaWiki\WikiMap\WikiMap::getCurrentWikiId(),
 					'workflow_type' => 'topic',
 					$dbr->expr( 'workflow_last_update_timestamp', '<', $dbr->timestamp( $timestamp ) ),
 				],
@@ -251,7 +251,7 @@ class FlowRemoveOldTopics extends Maintenance {
 					// workflow_id condition is only used to batch, the exact
 					// $batchStartId otherwise doesn't matter (unlike rev_id)
 					$dbr->expr( 'workflow_id', '>', $batchStartId->getBinary() ),
-					'workflow_wiki' => WikiMap::getCurrentWikiId(),
+					'workflow_wiki' => \MediaWiki\WikiMap\WikiMap::getCurrentWikiId(),
 					'workflow_type' => 'topic',
 					$dbr->expr( 'workflow_last_update_timestamp', '>=', $dbr->timestamp( $timestamp ) ),
 				] )
@@ -377,7 +377,7 @@ class FlowRemoveOldTopics extends Maintenance {
 
 	protected function removeReferences( AbstractRevision $revision ) {
 		$wikiReferences = $this->storage->find( 'WikiReference', [
-			'ref_src_wiki' => WikiMap::getCurrentWikiId(),
+			'ref_src_wiki' => \MediaWiki\WikiMap\WikiMap::getCurrentWikiId(),
 			'ref_src_object_type' => $revision->getRevisionType(),
 			'ref_src_object_id' => $revision->getCollectionId(),
 		] );
@@ -387,7 +387,7 @@ class FlowRemoveOldTopics extends Maintenance {
 		}
 
 		$urlReferences = $this->storage->find( 'URLReference', [
-			'ref_src_wiki' => WikiMap::getCurrentWikiId(),
+			'ref_src_wiki' => \MediaWiki\WikiMap\WikiMap::getCurrentWikiId(),
 			'ref_src_object_type' => $revision->getRevisionType(),
 			'ref_src_object_id' => $revision->getCollectionId(),
 		] );

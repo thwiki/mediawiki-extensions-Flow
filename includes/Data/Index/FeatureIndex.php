@@ -520,7 +520,7 @@ abstract class FeatureIndex implements Index {
 	public static function cachedDbId() {
 		global $wgFlowDefaultWikiDb;
 		if ( $wgFlowDefaultWikiDb === false ) {
-			return WikiMap::getCurrentWikiDbDomain()->getId();
+			return \MediaWiki\WikiMap\WikiMap::getCurrentWikiDbDomain()->getId();
 		} else {
 			return $wgFlowDefaultWikiDb;
 		}

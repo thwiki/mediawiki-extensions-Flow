@@ -105,7 +105,7 @@ class WikiReference extends Reference {
 	 */
 	public static function makeTitle( $namespace, $title ) {
 		try {
-			return Workflow::getFromTitleCache( WikiMap::getCurrentWikiId(), $namespace, $title );
+			return Workflow::getFromTitleCache( \MediaWiki\WikiMap\WikiMap::getCurrentWikiId(), $namespace, $title );
 		} catch ( InvalidInputException ) {
 			// duplicate Title::makeTitleSafe which returns null on failure,
 			// but only for InvalidInputException

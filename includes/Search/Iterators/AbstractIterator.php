@@ -49,7 +49,7 @@ abstract class AbstractIterator implements Iterator {
 
 	public function __construct( DbFactory $dbFactory ) {
 		$this->dbr = $dbFactory->getDB( DB_REPLICA );
-		$this->conditions = [ 'workflow_wiki' => WikiMap::getCurrentWikiId() ];
+		$this->conditions = [ 'workflow_wiki' => \MediaWiki\WikiMap\WikiMap::getCurrentWikiId() ];
 	}
 
 	/**

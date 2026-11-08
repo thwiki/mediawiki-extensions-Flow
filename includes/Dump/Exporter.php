@@ -166,7 +166,7 @@ class Exporter extends WikiExporter {
 
 		$iterator = new BatchRowIterator( $dbr, 'flow_workflow', 'workflow_id', 300 );
 		$iterator->setFetchColumns( [ '*' ] );
-		$iterator->addConditions( [ 'workflow_wiki' => WikiMap::getCurrentWikiId() ] );
+		$iterator->addConditions( [ 'workflow_wiki' => \MediaWiki\WikiMap\WikiMap::getCurrentWikiId() ] );
 		$iterator->addConditions( [ 'workflow_type' => 'discussion' ] );
 		$iterator->setCaller( __METHOD__ );
 

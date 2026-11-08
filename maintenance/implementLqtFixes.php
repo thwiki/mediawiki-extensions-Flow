@@ -1,4 +1,5 @@
 <?php
+use MediaWiki\MediaWikiServices;
 /**
  * Maintenance script to apply LQT porting fixes from a JSON file. (T397426)
  * Usage: php implementLqtFixes.php [--dryrun] < fixes.json
@@ -33,7 +34,7 @@ class ImplementLqtFixes extends Maintenance {
 		}
 
 		// Use FlowTalkpageManager user for edits, as in convertLqtPageOnLocalWiki.php
-		$occupationController = \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowTalkpageManager' );
+		$occupationController = \MediaWikiServices::getInstance()->getService( 'FlowTalkpageManager' );
 		$user = $occupationController->getTalkpageManager();
 		$summary = 'Automated LQT porting fix';
 
@@ -43,13 +44,13 @@ class ImplementLqtFixes extends Maintenance {
 			$content = $proposal['content'];
 			$pageId = intval( $proposal['id'] );
 
-			$title = Title::newFromText( $titleText );
+			$title = \MediaWiki\Title\Title::newFromText( $titleText );
 			if ( !$title || !$title->exists() ) {
 				$this->output( "!!! Skipping: $titleText (page does not exist)\n" );
 				continue;
 			}
 
-			$wikiPage = \MediaWiki\MediaWikiServices::getInstance()
+			$wikiPage = \MediaWikiServices::getInstance()
 				->getWikiPageFactory()
 				->newFromTitle( $title );
 			$dbPageId = $wikiPage->getId();

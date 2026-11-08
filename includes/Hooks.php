@@ -1456,7 +1456,7 @@ class Hooks implements
 			DeferredUpdates::addCallableUpdate( static function () use ( $storage, $articleId ) {
 				/** @var Model\Workflow[] $workflows */
 				$workflows = $storage->find( 'Workflow', [
-					'workflow_wiki' => WikiMap::getCurrentWikiId(),
+					'workflow_wiki' => \MediaWiki\WikiMap\WikiMap::getCurrentWikiId(),
 					'workflow_page_id' => $articleId,
 				] );
 				if ( !$workflows ) {
@@ -1800,7 +1800,7 @@ class Hooks implements
 			->where( [
 				'tree_parent_id' => null,
 				'r.rev_type' => 'post',
-				'workflow_wiki' => WikiMap::getCurrentWikiId(),
+				'workflow_wiki' => \MediaWiki\WikiMap\WikiMap::getCurrentWikiId(),
 				$dbr->expr( 'workflow_id', '>', $rcTimeLimit->getBinary() )
 			] )
 			->andWhere( $userWhere )

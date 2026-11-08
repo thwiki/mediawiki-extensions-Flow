@@ -65,7 +65,7 @@ class UserTuple {
 
 	public static function newFromUser( User $user ) {
 		return new self(
-			WikiMap::getCurrentWikiId(),
+			\MediaWiki\WikiMap\WikiMap::getCurrentWikiId(),
 			$user->getId(),
 			$user->isRegistered() ? null : $user->getName()
 		);
@@ -97,7 +97,7 @@ class UserTuple {
 	}
 
 	public function createUser() {
-		if ( $this->wiki !== WikiMap::getCurrentWikiId() ) {
+		if ( $this->wiki !== \MediaWiki\WikiMap\WikiMap::getCurrentWikiId() ) {
 			throw new CrossWikiException( 'Can only retrieve same-wiki users' );
 		}
 		if ( $this->id ) {

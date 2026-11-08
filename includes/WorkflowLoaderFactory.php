@@ -125,7 +125,7 @@ class WorkflowLoaderFactory {
 		if ( !$workflow ) {
 			throw new UnknownWorkflowIdException( 'Invalid workflow requested by id', 'invalid-input' );
 		}
-		if ( $workflow->getWiki() !== WikiMap::getCurrentWikiId() ) {
+		if ( $workflow->getWiki() !== \MediaWiki\WikiMap\WikiMap::getCurrentWikiId() ) {
 			throw new UnknownWorkflowIdException( 'The requested workflow does not exist on this wiki.' );
 		}
 		if ( $title !== false && $this->pageMoveInProgress === false && !$workflow->matchesTitle( $title ) ) {

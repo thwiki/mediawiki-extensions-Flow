@@ -33,63 +33,63 @@ $c = new Flow\Container;
 
 // MediaWiki
 $c['user'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowUser' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowUser' );
 };
 
 // Flow config
 $c['flow_actions'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowActions' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowActions' );
 };
 
 // Always returns the correct database for flow storage
 $c['db.factory'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowDbFactory' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowDbFactory' );
 };
 
 // Database Access Layer external from main implementation
 $c['repository.tree'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowTreeRepository' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowTreeRepository' );
 };
 
 $c['url_generator'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowUrlGenerator' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowUrlGenerator' );
 };
 
 $c['watched_items'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowWatchedTopicItems' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowWatchedTopicItems' );
 };
 
 $c['permissions'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowPermissions' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowPermissions' );
 };
 
 $c['lightncandy'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowTemplateHandler' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowTemplateHandler' );
 };
 
 $c['templating'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowTemplating' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowTemplating' );
 };
 
 // New Storage Impl
 $c['flowcache'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowCache' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowCache' );
 };
 
 $c['flowtalkpagemanager'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowTalkpageManager' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowTalkpageManager' );
 };
 
 // Batched username loader
 $c['repository.username'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowUserNameRepository' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowUserNameRepository' );
 };
 $c['collection.cache'] = static function ( $c ) {
 	return new Flow\Collection\CollectionCache();
 };
 // Individual workflow instances
 $c['storage.workflow.mapper'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowStorage.WorkflowMapper' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowStorage.WorkflowMapper' );
 };
 $c['storage.workflow'] = static function ( $c ) {
 	$workflowBackend = new BasicDbStorage(
@@ -355,17 +355,17 @@ $c['storage.post_summary'] = static function ( $c ) {
 };
 
 $c['storage.topic_list.mapper'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowStorage.TopicList.Mapper' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowStorage.TopicList.Mapper' );
 };
 $c['storage.topic_list.backend'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowStorage.TopicList.Backend' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowStorage.TopicList.Backend' );
 };
 /// In reverse order by topic last_updated
 $c['storage.topic_list.indexes.last_updated'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowStorage.TopicList.LastUpdatedIndex' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowStorage.TopicList.LastUpdatedIndex' );
 };
 $c['storage.topic_list'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowStorage.TopicList' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowStorage.TopicList' );
 };
 $c['storage.post.mapper'] = static function ( $c ) {
 	return CachingObjectMapper::model(
@@ -374,7 +374,7 @@ $c['storage.post.mapper'] = static function ( $c ) {
 	);
 };
 $c['storage.post.backend'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowPostRevisionStorage' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowPostRevisionStorage' );
 };
 $c['storage.post.listeners.moderation_logging'] = static function ( $c ) {
 	$moderationLogger = new Flow\Log\ModerationLogger(
@@ -451,7 +451,7 @@ $c['storage.post'] = static function ( $c ) {
 };
 
 $c['storage.post_topic_history.backend'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowPostRevisionTopicHistoryStorage' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowPostRevisionTopicHistoryStorage' );
 };
 
 $c['storage.post_topic_history.indexes.topic_lookup'] = static function ( $c ) {
@@ -539,7 +539,7 @@ $c['loader.root_post'] = static function ( $c ) {
 // Queue of callbacks to run by DeferredUpdates, but only
 // on successful commit
 $c['deferred_queue'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowDeferredQueue' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowDeferredQueue' );
 };
 
 $c['factory.loader.workflow'] = static function ( $c ) {
@@ -560,15 +560,15 @@ $c['factory.loader.workflow'] = static function ( $c ) {
 };
 
 $c['occupation_controller'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowTalkpageManager' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowTalkpageManager' );
 };
 
 $c['controller.opt_in'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowOptInController' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowOptInController' );
 };
 
 $c['controller.notification'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowNotificationsController' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowNotificationsController' );
 };
 
 $c['controller.spamfilter'] = static function ( $c ) {
@@ -600,7 +600,7 @@ $c['query.categoryviewer'] = static function ( $c ) {
 	);
 };
 $c['formatter.categoryviewer'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowCategoryViewerFormatter' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowCategoryViewerFormatter' );
 };
 $c['query.singlepost'] = static function ( $c ) {
 	return new Flow\Formatter\SinglePostQuery(
@@ -616,17 +616,17 @@ $c['query.checkuser'] = static function ( $c ) {
 };
 
 $c['formatter.irclineurl'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowIRCLineUrlFormatter' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowIRCLineUrlFormatter' );
 };
 
 $c['formatter.checkuser'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowCheckUserFormatter' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowCheckUserFormatter' );
 };
 $c['formatter.revisionview'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowRevisionViewFormatter' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowRevisionViewFormatter' );
 };
 $c['formatter.revision.diff.view'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowRevisionDiffViewFormatter' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowRevisionDiffViewFormatter' );
 };
 $c['query.topiclist'] = static function ( $c ) {
 	return new Flow\Formatter\TopicListQuery(
@@ -656,7 +656,7 @@ $c['query.changeslist'] = static function ( $c ) {
 		$c['repository.tree'],
 		$c['flow_actions']
 	);
-	$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
+	$userOptionsLookup = \MediaWiki\MediaWikiServices::getInstance()->getUserOptionsLookup();
 	$query->setExtendWatchlist( $userOptionsLookup->getOption( $c['user'], 'extendwatchlist' ) );
 
 	return $query;
@@ -689,7 +689,7 @@ $c['query.postsummary.view'] = static function ( $c ) {
 	);
 };
 $c['formatter.changeslist'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowChangesListFormatter' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowChangesListFormatter' );
 };
 
 $c['query.contributions'] = static function ( $c ) {
@@ -698,14 +698,14 @@ $c['query.contributions'] = static function ( $c ) {
 		$c['repository.tree'],
 		$c['db.factory'],
 		$c['flow_actions'],
-		MediaWikiServices::getInstance()->getUserIdentityLookup()
+		\MediaWiki\MediaWikiServices::getInstance()->getUserIdentityLookup()
 	);
 };
 $c['formatter.contributions'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowContributionsFormatter' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowContributionsFormatter' );
 };
 $c['formatter.contributions.feeditem'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowFeedItemFormatter' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowFeedItemFormatter' );
 };
 $c['query.board.history'] = static function ( $c ) {
 	return new Flow\Formatter\BoardHistoryQuery(
@@ -716,16 +716,16 @@ $c['query.board.history'] = static function ( $c ) {
 };
 
 $c['formatter.revision.factory'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowRevisionFormatterFactory' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowRevisionFormatterFactory' );
 };
 $c['formatter.topiclist'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowTopicListFormatter' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowTopicListFormatter' );
 };
 $c['formatter.topiclist.toc'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowTocTopicListFormatter' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowTocTopicListFormatter' );
 };
 $c['formatter.topic'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowTopicFormatter' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowTopicFormatter' );
 };
 
 $c['search.index.iterators.header'] = static function ( $c ) {
@@ -736,11 +736,11 @@ $c['search.index.iterators.topic'] = static function ( $c ) {
 };
 
 $c['storage.wiki_reference'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowStorage.WikiReference' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowStorage.WikiReference' );
 };
 
 $c['storage.url_reference'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowStorage.UrlReference' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowStorage.UrlReference' );
 };
 
 $c['reference.updater.links-tables'] = static function ( $c ) {
@@ -801,11 +801,11 @@ $c['importer'] = static function ( $c ) {
 };
 
 $c['listener.editcount'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowEditCountListener' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowEditCountListener' );
 };
 
 $c['formatter.undoedit'] = static function ( $c ) {
-	return MediaWikiServices::getInstance()->getService( 'FlowRevisionUndoViewFormatter' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowRevisionUndoViewFormatter' );
 };
 
 $c['board_mover'] = static function ( $c ) {
@@ -817,7 +817,7 @@ $c['board_mover'] = static function ( $c ) {
 };
 
 $c['default_logger'] = static function () {
-	return MediaWikiServices::getInstance()->getService( 'FlowDefaultLogger' );
+	return \MediaWiki\MediaWikiServices::getInstance()->getService( 'FlowDefaultLogger' );
 };
 
 return $c;

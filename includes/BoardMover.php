@@ -71,7 +71,7 @@ class BoardMover {
 		// revisit this.
 		/** @var Workflow[] $found */
 		$found = $this->storage->find( 'Workflow', [
-			'workflow_wiki' => WikiMap::getCurrentWikiId(),
+			'workflow_wiki' => \MediaWiki\WikiMap\WikiMap::getCurrentWikiId(),
 			'workflow_page_id' => $oldPageId,
 		] );
 		if ( !$found ) {
