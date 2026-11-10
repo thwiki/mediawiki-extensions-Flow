@@ -167,6 +167,9 @@ class TemplateHelper {
 					'ifCond' => 'Flow\TemplateHelper::ifCond',
 					'tooltip' => 'Flow\TemplateHelper::tooltip',
 					'progressiveEnhancement' => 'Flow\TemplateHelper::progressiveEnhancement',
+					// [THBWiki F-23] 恢复 REL1_39 的站点定制：讨论板头像与带链接的作者名
+					'avatar' => 'ExtAchievement::FlowAvatarHelper',
+					'title' => 'ExtAchievement::FlowTitleHelper',
 				],
 			]
 		);

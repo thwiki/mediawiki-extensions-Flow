@@ -6,11 +6,12 @@
 			   class="{{#unless links.userpage.exists}}new {{/unless}}mw-userlink">
 		{{/if}}
 		{{~#if name~}}
+			{{avatar this}}
 			<bdi>{{~name~}}</bdi>
 		{{~else~}}
 			{{~l10n "flow-anonymous"}}
 		{{~/if~}}
-		{{~#if links.userpage~}}</a>{{~/if~}}
+		{{~#if links.userpage~}}{{title this}}</a>{{~/if~}}
 
 		<span class="mw-usertoollinks flow-pipelist">
 			(
